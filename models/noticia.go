@@ -17,7 +17,7 @@ type Noticia struct {
 
 func (n *Noticia) BuscaTodasAsNoticias() ([]Noticia, error) {
 
-	conexao := database.Connect()
+	conexao, _ := database.Connect()
 	defer conexao.Close()
 
 	noticias := []Noticia{}
@@ -43,7 +43,7 @@ func (n *Noticia) BuscaTodasAsNoticias() ([]Noticia, error) {
 
 func (n *Noticia) AdicionaNoticia() (*Noticia, error) {
 
-	conexao := database.Connect()
+	conexao, _ := database.Connect()
 	defer conexao.Close()
 
 	var err error

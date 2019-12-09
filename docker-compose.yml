@@ -45,6 +45,7 @@ services:
     depends_on:
       - "mysql"
       - "redis"
+      - "app1"
 
   app3:
     build:
@@ -59,6 +60,7 @@ services:
     depends_on:
       - "mysql"
       - "redis"
+      - "app2"
 
   redis:
     image: redis
@@ -66,13 +68,27 @@ services:
     networks:
       - prod
     depends_on:
-      - mysql
+      - mysql      
+    
+    expose:
+      # Opens port 3306 on the container
+      - '6379'      
 
   mysql:
-    image: mariadb
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
+    image: mysql
+    container_name: mysql
+    ports: 
+      - 3306:3306
+    environment:       
+      - MYSQL_USER=glauber
+      - MYSQL_PASSWORD=exemplo
+      - MYSQL_DATABASE=gonoticias
+      - MYSQL_ROOT_PASSWORD=exemplo
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - prod
+
 
 networks:
   prod:
