@@ -8,9 +8,9 @@ import (
 
 const (
 	DB_NAME = "gonoticias"
-	DB_HOST = "localhost"
+	DB_HOST = "mysql"
 	DB_USER = "root"
-	DB_PASS = "12345678"
+	DB_PASS = "example"
 	DB_PORT = "3306"
 )
 

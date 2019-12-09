@@ -10,7 +10,7 @@ const (
 )
 
 func RedisConnect() redis.Conn {
-	c, err := redis.Dial("tcp", "192.168.99.100:6379")
+	c, err := redis.Dial("tcp", "redis:6379")
 	HandleError(err)
 	return c
 }
